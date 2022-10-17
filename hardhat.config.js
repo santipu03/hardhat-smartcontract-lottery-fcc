@@ -27,6 +27,10 @@ module.exports = {
             blockConfirmations: 6,
         },
     },
+    contractSizer: {
+        runOnCompile: false,
+        only: ["Raffle"],
+    },
     namedAccounts: {
         deployer: {
             default: 0,
