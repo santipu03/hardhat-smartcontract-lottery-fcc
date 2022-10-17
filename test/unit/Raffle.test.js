@@ -64,6 +64,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
               it("returns false if people haven't sent any ETH", async function () {
                   await network.provider.send("evm_increaseTime", [interval.toNumber() + 1])
                   await network.provider.send("evm_mine", [])
+                  // we simulate calling checkUpkeep() to get upKeepNeeded with callstatic
                   const { upKeepNeeded } = await raffle.callStatic.checkUpkeep([])
                   assert(!upKeepNeeded)
               })
@@ -110,6 +111,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                   await raffle.enterRaffle({ value: raffleEntranceFee })
                   await network.provider.send("evm_increaseTime", [interval.toNumber() + 1])
                   await network.provider.send("evm_mine", [])
+                  // We check requestId exists, that means the call to the vrf has been made
                   const txResponse = await raffle.performUpkeep([])
                   const txReceipt = await txResponse.wait(1)
                   const requestId = txReceipt.events[1].args.requestId
@@ -136,16 +138,15 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                   const addittionalEntrants = 3
                   const startingIndex = 1
                   const accounts = await ethers.getSigners()
+                  // loop for entering new players in the contract
                   for (let i = startingIndex; i < startingIndex + addittionalEntrants; i++) {
                       const accountConnectedRaffle = raffle.connect(accounts[i])
                       await accountConnectedRaffle.enterRaffle({ value: raffleEntranceFee })
                   }
                   const startingTimestamp = await raffle.getLastTimeStamp()
 
-                  // call performUpkeep (mock being Chainlink Keepers)
-                  // call fulfillRandomWords (mock being the Chainlink VRF)
-                  // we will have to wait for the fulfillRandomWords to be called
-
+                  // We have to wait for the event WinnerPicked to be emitted, so we wrap the listener in a promise
+                  // Below the promise, we fire the event
                   await new Promise(async (resolve, reject) => {
                       raffle.once("WinnerPicked", async () => {
                           try {
