@@ -15,13 +15,15 @@ developmentChains.includes(network.name)
 
           describe("fulfillRandomWords", function () {
               it("works with live Chainlink Keepers and Chainlink VRF, we get a random winner", async function () {
+                  console.log("Setting up test...")
                   const startingTimestamp = await raffle.getLastTimeStamp()
                   const accounts = await ethers.getSigners()
 
+                  console.log("Setting up Listener...")
                   await new Promise(async (resolve, reject) => {
                       // we set up listener first
                       raffle.once("WinnerPicked", async () => {
-                          console.log("Event fired!")
+                          console.log("WinnerPicked event fired!")
                           try {
                               const recentWinner = await raffle.getRecentWinner()
                               const raffleState = await raffle.getRaffleState()
@@ -33,8 +35,8 @@ developmentChains.includes(network.name)
                               assert.equal(recentWinner.toString(), accounts[0].address)
                               assert.equal(raffleState.toString(), "0")
                               assert.equal(
-                                  winnerEndingBalance,
-                                  winnerStartingBalance.toString().add(raffleEntranceFee.toString())
+                                  winnerEndingBalance.toString(),
+                                  winnerStartingBalance.add(raffleEntranceFee).toString()
                               )
 
                               resolve()
@@ -45,7 +47,10 @@ developmentChains.includes(network.name)
                       })
 
                       // Then, we enter the Raffle
-                      await raffle.enterRaffle({ value: raffleEntranceFee })
+                      console.log("Entering Raffle...")
+                      const tx = await raffle.enterRaffle({ value: raffleEntranceFee })
+                      await tx.wait(1)
+                      console.log("Ok, time to wait...")
                       const winnerStartingBalance = await accounts[0].getBalance()
                   })
               })
