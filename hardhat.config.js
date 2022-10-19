@@ -26,6 +26,9 @@ module.exports = {
             chainId: 5,
             blockConfirmations: 6,
         },
+        localhost: {
+            chainId: 31337,
+        },
     },
     contractSizer: {
         runOnCompile: false,
