@@ -10,9 +10,28 @@ _[ :classical_building: FreeCodeCamp original repo](https://github.com/PatrickAl
 
 Check the contract deployed with this project!
 
-_[ :information_source:	 Contract deployed](https://goerli.etherscan.io/address/0x46F9530bF699EF8E1658036090eEf4Fd245Fb9C0)_
+_[ :information_source: Contract deployed](https://goerli.etherscan.io/address/0x46F9530bF699EF8E1658036090eEf4Fd245Fb9C0)_
 
 ## Frontend
+
 Check this repo to see the frontend of this project :arrow_right: [Frontend](https://github.com/santipu03/nextjs-smartcontract-lottery-fcc)
+
 ## Demo
+
+Check a live demo of this project :arrow_right: [Live Demo](https://hidden-firefly-7534.on.fleek.co/)
+
+## Frontend
+
+Check this repo to see the frontend of this project :arrow_right: [Frontend](https://github.com/santipu03/nextjs-smartcontract-lottery-fcc)
+
+## Demo
+
+Check a live demo of this project :arrow_right: [Live Demo](https://hidden-firefly-7534.on.fleek.co/)
+
+## Frontend
+
+Check this repo to see the frontend of this project :arrow_right: [Frontend](https://github.com/santipu03/nextjs-smartcontract-lottery-fcc)
+
+## Demo
+
 Check a live demo of this project :arrow_right: [Live Demo](https://hidden-firefly-7534.on.fleek.co/)
