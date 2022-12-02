@@ -19,19 +19,3 @@ Check this repo to see the frontend of this project :arrow_right: [Frontend](htt
 ## Demo
 
 Check a live demo of this project :arrow_right: [Live Demo](https://hidden-firefly-7534.on.fleek.co/)
-
-## Frontend
-
-Check this repo to see the frontend of this project :arrow_right: [Frontend](https://github.com/santipu03/nextjs-smartcontract-lottery-fcc)
-
-## Demo
-
-Check a live demo of this project :arrow_right: [Live Demo](https://hidden-firefly-7534.on.fleek.co/)
-
-## Frontend
-
-Check this repo to see the frontend of this project :arrow_right: [Frontend](https://github.com/santipu03/nextjs-smartcontract-lottery-fcc)
-
-## Demo
-
-Check a live demo of this project :arrow_right: [Live Demo](https://hidden-firefly-7534.on.fleek.co/)
